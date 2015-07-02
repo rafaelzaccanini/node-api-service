@@ -1,0 +1,5 @@
+mongod -f "C:\Program Files\MongoDB\Server\3.0\bin\mongo.conf"
+
+mongod -f "C:\Program Files\MongoDB\Server\3.0\bin\mongo.conf" --install --serviceName MongoDbService --serviceDisplayName "MongoDB Server Instance 27017" --serviceDescription "MongoDB Server Instance running on 27017"
+
+mongod -f "C:\Program Files\MongoDB\Server\3.0\bin\mongo.conf" --remove --serviceName MongoDbService --serviceDisplayName "MongoDB Server Instance 27017" --serviceDescription "MongoDB Server Instance running on 27017"
