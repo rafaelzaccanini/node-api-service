@@ -1,0 +1,141 @@
+﻿@{
+    Layout = "";
+}
+
+<html ng-app="mynodemodule">
+
+<head title="">
+
+    <title></title>
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/Configure/module.js"></script>
+    <script src="~/Scripts/Configure/service.js"></script>
+    <script src="~/Scripts/Configure/controller.js"></script>
+
+    <script language="javascript">
+    function checkInput(ob) {
+        var invalidChars = /[^0-9]/gi
+        if (invalidChars.test(ob.value)) {
+            ob.value = ob.value.replace(invalidChars, "");
+        }
+    }
+    </script>
+
+</head>
+
+
+<body ng-controller="mynodecontroller">
+
+    <div class="container body-content">
+
+        <h2>Filmes</h2>
+        <table class="table">
+            <tr>
+                <td>
+                    ID
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="Filme._id" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Código
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="Filme.CodFilme" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nome
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="Filme.Nome" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gênero
+                </td>
+                <td>
+                    <select ng-model="Filme.Genero" class="form-control">
+                        <option value=""></option>
+                        <option value="Ação">Ação</option>
+                        <option value="Animação">Animação</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Documentário">Documentário</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Terror">Terror</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lançamento
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="Filme.Lancamento" onkeyup="checkInput(this)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <input type="button" value="Salvar" class="btn btn-success" ng-click="salvar()" />
+
+                    <input type="button" value="Cancelar" class="btn btn-danger" ng-click="limpar()" />
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            {{Message}}
+        </div>
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <td>
+                        ID
+                    </td>
+                    <td>
+                        Código
+                    </td>
+                    <td>
+                        Nome
+                    </td>
+                    <td>
+                        Gênero
+                    </td>
+                    <td>
+                        Lançamento
+                    </td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody ng-repeat="Filme in Filmes">
+                <tr>
+                    <td>{{Filme._id}}</td>
+                    <td>{{Filme.CodFilme}}</td>
+                    <td>{{Filme.Nome}}</td>
+                    <td>{{Filme.Genero}}</td>
+                    <td>{{Filme.Lancamento}}</td>
+                    <td>
+                        <button class="glyphicon glyphicon-edit" ng-click="editar(Filme)"></button>
+                        &nbsp;
+                        <button class="glyphicon glyphicon-trash" ng-click="apagar(Filme)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,2 @@
+E:\Codicon Tecnologia\Github\NodeAPIService\NodeAPIService.API\obj\Debug\NodeAPIService.API.njsprojResolveAssemblyReference.cache
+E:\NodeAPIService\NodeAPIService.API\bin\Microsoft.NodejsTools.WebRole.dll

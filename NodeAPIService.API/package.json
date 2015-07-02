@@ -1,0 +1,17 @@
+{
+  "name": "NodeAPIService.API",
+  "version": "0.0.0",
+  "description": "NodeAPIService.API",
+  "main": "app.js",
+  "author": {
+    "name": "rafael.zaccanini",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "express": "^4.13.0",
+    "mongodb": "^2.0.35",
+    "mongoose": "^4.0.6",
+    "npm-flatten": "0.0.1"
+  }
+}
