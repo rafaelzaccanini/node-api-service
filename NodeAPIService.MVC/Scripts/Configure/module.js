@@ -1,4 +1,4 @@
 ﻿var app;
 (function () {
-    app = angular.module('mynodemodule', []);
+    app = angular.module('nodemodule', []);
 })();

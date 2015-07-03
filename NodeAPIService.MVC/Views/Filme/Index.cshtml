@@ -1,12 +1,7 @@
-﻿@{
-    Layout = "";
-}
+﻿<html ng-app="nodemodule">
 
-<html ng-app="mynodemodule">
-
-<head title="">
-
-    <title></title>
+<head>
+    <title>Filmes</title>
 
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -19,18 +14,18 @@
     <script src="~/Scripts/Configure/controller.js"></script>
 
     <script language="javascript">
-    function checkInput(ob) {
-        var invalidChars = /[^0-9]/gi
-        if (invalidChars.test(ob.value)) {
-            ob.value = ob.value.replace(invalidChars, "");
+        function checkInput(ob) {
+            var invalidChars = /[^0-9]/gi
+            if (invalidChars.test(ob.value)) {
+                ob.value = ob.value.replace(invalidChars, "");
+            }
         }
-    }
     </script>
 
 </head>
 
 
-<body ng-controller="mynodecontroller">
+<body ng-controller="nodecontroller">
 
     <div class="container body-content">
 
@@ -43,6 +38,7 @@
                 <td>
                     <input type="text" class="form-control" ng-model="Filme._id" readonly="readonly" />
                 </td>
+                <td colspan="2"></td>
             </tr>
             <tr>
                 <td>
@@ -51,8 +47,6 @@
                 <td>
                     <input type="text" class="form-control" ng-model="Filme.CodFilme" />
                 </td>
-            </tr>
-            <tr>
                 <td>
                     Nome
                 </td>
@@ -75,18 +69,15 @@
                         <option value="Terror">Terror</option>
                     </select>
                 </td>
-            </tr>
-            <tr>
                 <td>
-                    Lançamento
+                    Ano de Lançamento
                 </td>
                 <td>
                     <input type="text" class="form-control" ng-model="Filme.Lancamento" onkeyup="checkInput(this)" />
                 </td>
             </tr>
             <tr>
-                <td>
-                </td>
+                <td colspan="3"></td>
                 <td>
                     <input type="button" value="Salvar" class="btn btn-success" ng-click="salvar()" />
 
@@ -95,10 +86,11 @@
             </tr>
         </table>
 
-        <div>
+        <h4>
             {{Message}}
-        </div>
-        <table class="table table-bordered table-condensed">
+        </h4>
+
+        <table class="table table-bordered table-condensed table-hover table-striped">
             <thead>
                 <tr>
                     <td>
@@ -114,7 +106,7 @@
                         Gênero
                     </td>
                     <td>
-                        Lançamento
+                        Ano de Lançamento
                     </td>
                     <td></td>
                 </tr>

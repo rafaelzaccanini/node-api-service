@@ -7,6 +7,10 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "NodeAPIService.API", "NodeA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeAPIService.MVC", "NodeAPIService.MVC\NodeAPIService.MVC.csproj", "{A6E28381-4EF8-48DC-B1CF-40B4FB4CA2B0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server-api", "server-api", "{92B5591C-4946-4722-B51C-7BEEB1840A69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client-mvc-angular", "client-mvc-angular", "{CE6E5852-CA5A-4167-89BA-156B09205AF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED4B5716-55A7-4A60-B794-9EE1BE7BB137} = {92B5591C-4946-4722-B51C-7BEEB1840A69}
+		{A6E28381-4EF8-48DC-B1CF-40B4FB4CA2B0} = {CE6E5852-CA5A-4167-89BA-156B09205AF9}
 	EndGlobalSection
 EndGlobal

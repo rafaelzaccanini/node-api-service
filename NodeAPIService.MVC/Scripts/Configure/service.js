@@ -1,4 +1,4 @@
-﻿app.service('mynodeservice', function ($http) {
+﻿app.service('nodeservice', function ($http) {
     
     this.get = function(){
         var res = $http.get("http://localhost:8080/Locadora/api/filmes");
