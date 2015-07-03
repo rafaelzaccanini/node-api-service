@@ -14,7 +14,7 @@ var FilmeSchema = mongoose.Schema({
     Genero: String,
     Lancamento: Number
 });
-var FilmeModel = mongoose.model('FilmeInfo', FilmeSchema);
+var FilmeModel = mongoose.model('Filme', FilmeSchema);
 
 
 // Seleciona todos os filmes
