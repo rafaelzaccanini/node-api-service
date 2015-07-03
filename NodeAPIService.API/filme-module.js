@@ -1,13 +1,17 @@
-﻿var mongoose = require('mongoose'); 
+﻿var config = require('./config.js');
+var mongoose = require('mongoose'); 
 
-mongoose.connect('mongodb://localhost:27017/LocadoraDB');
+console.log("Conectando ao MongoDB...");
+
+mongoose.connect(config.mongodb.connection);
 var db = mongoose.Connection;
 
 if (db == 'undefined') {
     console.log("Erro ao criar conexão com MongoDB.");
 }
+console.log("Conexão com MongoDB realizada com sucesso.");
 
-//Cria schema para Filme
+// Cria schema para Filme
 var FilmeSchema = mongoose.Schema({
     CodFilme: String,
     Nome: String,
@@ -19,9 +23,11 @@ var FilmeModel = mongoose.model('Filme', FilmeSchema);
 
 // Seleciona todos os filmes
 exports.get = function (request, response) {
+    console.log("Selecionando todos os filmes.");
+
     FilmeModel.find().exec(function (error, filmes) {
         if (error) 
-            response.send(500, { error: error });
+            response.status(500).send(error);
         else
             response.send(filmes);
     });
@@ -29,9 +35,11 @@ exports.get = function (request, response) {
 
 // Seleciona um filme pelo id
 exports.getById = function (request, response) {
+    console.log("Selecionando o filme com id " + request.params.id);
+
     FilmeModel.findOne({ _id: request.params.id }, function (error, filme) {
         if (error)
-            response.send(500, { error: error });
+            response.status(500).send(error);
         else
             response.send(JSON.stringify(filme));
     });
@@ -39,6 +47,8 @@ exports.getById = function (request, response) {
 
 // Cria um novo filme
 exports.add = function (request, response) {
+    console.log("Criando o filme " + request.body.Nome);
+    
     var novoFilme = 
     {
         CodFilme: request.body.CodFilme, 
@@ -49,7 +59,7 @@ exports.add = function (request, response) {
 
     FilmeModel.create(novoFilme, function (error, filme) {
         if (error)
-            response.send(500, { error: error });
+            response.status(500).send(error);
         else
             response.send("Filme criado com sucesso!");
     });
@@ -57,9 +67,11 @@ exports.add = function (request, response) {
 
 // Altera um filme
 exports.put = function (request, response) {
+    console.log("Alterando o filme com id " + request.params.id);
+
     FilmeModel.findOne({ _id: request.params.id }, function (error, filme) {
         if (error) {
-            response.send(500, { error: error });
+            response.status(500).send(error);
         } else {
             
             filme.CodFilme = request.body.CodFilme;
@@ -69,7 +81,7 @@ exports.put = function (request, response) {
             
             filme.save(function (err) {
                 if (err)
-                    response.send(500, { error: err });
+                    response.status(500).send(err);
                 
                 response.send("Filme alterado com sucesso!");
             });
@@ -79,9 +91,11 @@ exports.put = function (request, response) {
 
 // Apaga um filme
 exports.delete = function (request, response) {
+    console.log("Apagando o filme com id " + request.params.id);
+
     FilmeModel.remove({ _id: request.params.id }, function (error, filme) {
         if (error)
-            response.send(500, { error: error });
+            response.status(500).send(error);
         else
             response.send("Filme apagado com sucesso!");
     });

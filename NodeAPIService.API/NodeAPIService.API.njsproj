@@ -30,6 +30,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="config.js" />
     <Compile Include="server.js" />
     <Compile Include="filme-module.js" />
     <Content Include="package.json" />

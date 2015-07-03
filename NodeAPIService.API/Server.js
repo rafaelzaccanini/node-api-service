@@ -1,12 +1,13 @@
 ﻿var body_parser = require('body-parser'); 
-var path = require('path'); 
 var express = require('express'); 
-var http = require('http'); 
-var porta = 8080;
+var config = require('./config.js');
 var operacoes_filme = require('./filme-module.js'); 
 
 var app = express(); 
-app.use(body_parser());
+app.use(body_parser.urlencoded({
+    extended: true
+}));
+app.use(body_parser.json());
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:29301'); //Porta do site que vai chamar a API
@@ -21,4 +22,4 @@ app.post('/Locadora/api/filmes', operacoes_filme.add);
 app.put('/Locadora/api/filmes/:id', operacoes_filme.put);
 app.delete('/Locadora/api/filmes/:id', operacoes_filme.delete);
 
-app.listen(porta);
+app.listen(config.server.porta);
