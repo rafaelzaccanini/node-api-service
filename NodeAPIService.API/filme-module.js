@@ -19,7 +19,7 @@ var FilmeSchema = mongoose.Schema({
     Lancamento: Number
 });
 var FilmeModel = mongoose.model('Filme', FilmeSchema);
-
+console.log("Schemas definidos com sucesso.");
 
 // Seleciona todos os filmes
 exports.get = function (request, response) {
@@ -28,8 +28,8 @@ exports.get = function (request, response) {
     FilmeModel.find().exec(function (error, filmes) {
         if (error) 
             response.status(500).send(error);
-        else
-            response.send(filmes);
+        
+        response.send(filmes);
     });
 };
 
@@ -40,8 +40,8 @@ exports.getById = function (request, response) {
     FilmeModel.findOne({ _id: request.params.id }, function (error, filme) {
         if (error)
             response.status(500).send(error);
-        else
-            response.send(JSON.stringify(filme));
+        
+        response.send(JSON.stringify(filme));
     });
 };
 
@@ -60,8 +60,8 @@ exports.add = function (request, response) {
     FilmeModel.create(novoFilme, function (error, filme) {
         if (error)
             response.status(500).send(error);
-        else
-            response.send("Filme criado com sucesso!");
+        
+        response.send("Filme criado com sucesso!");
     });
 };
 
@@ -96,7 +96,7 @@ exports.delete = function (request, response) {
     FilmeModel.remove({ _id: request.params.id }, function (error, filme) {
         if (error)
             response.status(500).send(error);
-        else
-            response.send("Filme apagado com sucesso!");
+        
+        response.send("Filme apagado com sucesso!");
     });
 };
